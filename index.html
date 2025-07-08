@@ -305,8 +305,12 @@
 Born out of a bold idea — to redefine indulgence without compromise — we serve crave-worthy burgers that are 100% gluten-free, lactose-free, and oil-free. Yes, you read that right.
 
 In a world where burgers often mean frozen patties, heavy oils, preservatives, and guilt, we stand apart. Every bite at Freejunx is crafted to satisfy your taste buds while nourishing your body — made fresh, clean, and consciously. Whether you're a fitness enthusiast, a health-conscious foodie, or simply someone who loves a good burger without the bloated aftermath, we’re here for you.
+<br>
+<br>
 
 Our mission is simple:
+<br>
+👉 Make healthy food accessible, and make healthy food delicious.<br>
 👉 Make burgers healthy, and make healthy food tasty.
 Because we believe everyone deserves to enjoy their favorite comfort food without sacrificing their health.
 
@@ -398,9 +402,22 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
     </div>
   </footer>
 
-  <a href="#top" class="floating-logo" aria-label="Back to top">
-    <img src="logo.jpg" alt="Back to top" />
-  </a>
+ <a href="#" id="scrollToBottom">
+  <img src="logo.jpg" alt="Logo"
+    style="position:fixed; top:50%; right:20px; transform:translateY(-50%);
+           width:60px; height:60px; border-radius:50%; cursor:pointer; z-index:1000;">
+</a>
+
+<script>
+  document.getElementById("scrollToBottom").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  });
+</script>
+</script>
 
   <!-- AOS Script -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
