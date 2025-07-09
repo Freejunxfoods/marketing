@@ -13,6 +13,7 @@
   <meta name="description" content="Freejunx – Healthy Fast Food: Gluten-free, lactose-free, and oil-free delicious meals made for guilt-free indulgence. Order via WhatsApp now!">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="logo.jpg" type="image/jpg">
+
   <style>
     * {
       box-sizing: border-box;
@@ -25,6 +26,7 @@
       background-color: #F9F5EF;
       color: #fff;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -57,60 +59,60 @@
       padding: 20px 15px;
     }
 
-   
-
-    
-
     h2 {
       font-size: 18px;
       margin-bottom: 15px;
       text-align: center;
       color: #1e5231;
     }
-    .p{
+
+    .p {
       font-family: 'Poppins', sans-serif;
       font-size: 16px;
       color: #111;
       margin-bottom: 15px;
     }
+
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
     }
+
     .menu-item img {
       width: 100%;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
+
     .menu-item p {
       font-size: 16px;
       text-align: center;
       margin-top: 8px;
       color: #444;
     }
+
     .abtus h2 {
       font-family: 'Algerian', serif;
       font-size: 24px;
       color: #1e5231;
       margin-bottom: 15px;
     }
+
     .abtus p {
       font-size: 16px;
       line-height: 1.6;
       color: #555;
       margin-bottom: 15px;
     }
+
     .abtus {
       background-color: #fefce0;
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
-    
-
-
 
     .whatsapp {
       text-align: center;
@@ -145,21 +147,23 @@
       color: #f8f5b6;
       text-decoration: underline;
     }
+
     footer a:hover {
       color: #fff;
     }
+
     footer p {
       margin: 5px 0;
       color: #fff;
-
     }
 
     .floating-logo {
       position: fixed;
-      bottom: 15px;
-      right: 15px;
-      width: 48px;
-      height: 48px;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
       background-color: #fff;
       border-radius: 50%;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -167,32 +171,30 @@
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      transition: background 0.2s;
-    }
-
-    .floating-logo:hover {
-      background-color: #1e5231;
+      cursor: pointer;
     }
 
     .floating-logo img {
       width: 28px;
       height: 28px;
+      border-radius: 50%;
     }
-    .scroll-behavior {
-      scroll-behavior: smooth;
-    } 
+
     .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
     }
+
     .form-group {
       margin-bottom: 15px;
     }
+
     .form-row {
       display: flex;
       gap: 15px;
     }
+
     .form-control {
       width: 100%;
       padding: 10px;
@@ -200,10 +202,12 @@
       border-radius: 5px;
       font-size: 16px;
     }
+
     .form-control:focus {
       border-color: #1e5231;
       outline: none;
     }
+
     .btn {
       background-color: #1e5231;
       color: #fff;
@@ -215,90 +219,103 @@
       font-weight: 600;
       transition: background-color 0.3s ease;
     }
+
     .btn:hover {
       background-color: #145a3d;
     }
-    .feedback {
-  padding: 40px 20px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-}
-.feedback h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-.feedback p {
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
 
-.faq {
+    .feedback {
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+      border-radius: 12px;
+    }
+
+    .feedback h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .feedback p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .faq {
       background-color: #fefce0;
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       margin-top: 30px;
     }
+
     .faq h2 {
       font-family: 'Algerian', serif;
       font-size: 24px;
       color: #1e5231;
       margin-bottom: 15px;
     }
+
     .faq-item {
       margin-bottom: 15px;
     }
+
     .faq-item h3 {
       font-size: 18px;
       color: #1e5231;
       margin-bottom: 5px;
     }
+
     .faq-item p {
       font-size: 16px;
       color: #555;
     }
+
     @media (max-width: 768px) {
       header h1 {
         font-size: 20px;
       }
+
       .logo img {
         width: 60px;
       }
+
       .menu-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       }
+
       .abtus p, .feedback p, .faq-item p {
         font-size: 14px;
       }
     }
+
     .social-icons {
-    margin-top: 10px;
-}
+      margin-top: 10px;
+    }
 
-.social-icons a {
-    color: rgb(255, 255, 255);
-    margin: 0 8px;
-    font-size: 1.2rem;
-}
+    .social-icons a {
+      color: rgb(255, 255, 255);
+      margin: 0 8px;
+      font-size: 1.2rem;
+    }
 
-.social-icons a:hover {
-    color: #6FBF73;
-}
-
+    .social-icons a:hover {
+      color: #6FBF73;
+    }
   </style>
 </head>
+
 <body id="top">
 
   <header>
     <div class="logo">
       <img src="logo.jpg" alt="FREEJUNX Logo" />
     </div>
-    <h1 style="font-family:'Times New Roman', Times, serif ;">FREEJUNX</h1>
+    <h1 style="font-family:'Times New Roman', Times, serif;">FREEJUNX</h1>
     <p>You will crave, not for junk anymore</p>
     <p>Gluten-free, Lactose-free, Oil-free</p>
   </header>
 
-  <section class="abtus" data-aos="fade-up">
+   <section class="abtus" data-aos="fade-up">
     <h2 style="font-family: Algerian;">About Us</h2>
     <p>At Freejunx, we believe burgers don’t have to be junk food.
 
@@ -318,76 +335,41 @@ Join the food revolution.
 Eat freely. Live guilt-free. Only at Freejunx.</p>
   </section>
 
-<section class="menu-grid">
+  <section class="menu-grid">
     <h2 style="font-family: Algerian;">Our Menu</h2>
-    <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
-      <img src="menu1.jpg" alt="Menu Item 1" />
-      <p>Green Energy Bowl</p>
-    </div>
-    <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
-      <img src="menu2.jpg" alt="Menu Item 2" />
-      <p>Protein Wrap</p>
-    </div>
-    <div class="menu-item" data-aos="fade-up" data-aos-delay="400">
-      <img src="menu3.jpg" alt="Menu Item 3" />
-      <p>Cold-Pressed Juice</p>
-    </div>
-    <div class="menu-item" data-aos="fade-up" data-aos-delay="600">
-      <img src="menu4.jpg" alt="Menu Item 4" />
-      <p>Vegan Burger</p>
-    </div>
-    <div class="menu-item" data-aos="fade-up" data-aos-delay="800">
-      <img src="menu5.jpg" alt="Menu Item 5" />
-      <p>Quinoa Salad</p>
-    </div>
-    <div class="menu-item" data-aos="fade-up" data-aos-delay="1000">
-      <img src="menu6.jpg" alt="Menu Item 6" />
-      <p>Fruit Smoothie</p>
-      </div>
-
+    <div class="menu-item" data-aos="fade-up"><img src="menu1.jpg" /><p>Green Energy Bowl</p></div>
+    <div class="menu-item" data-aos="fade-up" data-aos-delay="200"><img src="menu2.jpg" /><p>Protein Wrap</p></div>
+    <div class="menu-item" data-aos="fade-up" data-aos-delay="400"><img src="menu3.jpg" /><p>Cold-Pressed Juice</p></div>
+    <div class="menu-item" data-aos="fade-up" data-aos-delay="600"><img src="menu4.jpg" /><p>Vegan Burger</p></div>
+    <div class="menu-item" data-aos="fade-up" data-aos-delay="800"><img src="menu5.jpg" /><p>Quinoa Salad</p></div>
+    <div class="menu-item" data-aos="fade-up" data-aos-delay="1000"><img src="menu6.jpg" /><p>Fruit Smoothie</p></div>
   </section>
 
-  <section class="whatsapp" data-aos="zoom-in" data-aos-delay="1400">
+  <section class="whatsapp" id="order" data-aos="zoom-in" data-aos-delay="1400">
     <div class="get-ur-meal-btn">
       <h2>Get Your Meal Now!</h2>
       <h2>Order via WhatsApp for quick delivery.</h2>
-      <a href="https://wa.me/916364800327?text=Hi!%20I%20want%20to%20order%20from%20Freejunx" target="_blank" style="text-decoration: none;">Order Now</a>
+      <a href="https://wa.me/919900347281?text=Hi!%20I%20want%20to%20order%20from%20Freejunx" target="_blank">Order Now</a>
     </div>
   </section>
- <section class="feedback" data-aos="fade-up" data-aos-delay="1200" style="text-align: center;">
-  <h2 style="font-family: Algerian;">Feedback</h2>
-  <p>We value your feedback! Please share your thoughts about our food and service.</p>
 
-  <div style="max-width: 400px; margin: 0 auto;">
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSfG1QX3wdkXQ-QB2iTjWAQrQbUb-_FZzzm1lOkYA3jVAberBQ/viewform?embedded=true" 
-      width="100%" 
-      height="650" 
-      style="border: none; border-radius: 8px;"
-      frameborder="0" 
-      marginheight="0" 
-      marginwidth="0">
-      Loading…
-    </iframe>
-  </div>
-</section>
-
- 
+  <section class="feedback" data-aos="fade-up" data-aos-delay="1200" style="text-align: center;">
+    <h2 style="font-family: Algerian;">Feedback</h2>
+    <p>We value your feedback! Please share your thoughts about our food and service.</p>
+    <div style="max-width: 400px; margin: 0 auto;">
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfG1QX3wdkXQ-QB2iTjWAQrQbUb-_FZzzm1lOkYA3jVAberBQ/viewform?embedded=true" 
+        width="100%" height="650" style="border: none; border-radius: 8px;">
+        Loading…
+      </iframe>
+    </div>
+  </section>
 
   <section class="faq" data-aos="fade-up" data-aos-delay="1600">
     <h2 style="font-family: Algerian;">Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <h3>What makes Freejunx different?</h3>
-      <p>We offer burgers that are 100% gluten-free, lactose-free, and oil-free, without compromising on taste.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Are your ingredients really fresh?</h3>
-      <p>Yes! We use only the freshest ingredients in all our dishes, prepared daily.</p>
-    </div>
-    <div class="faq-item">
-      <h3>How can I place an order?</h3>
-      <p>You can order via our website or through WhatsApp for quick delivery.</p>
-    </div>
+    <div class="faq-item"><h3>What makes Freejunx different?</h3><p>We offer burgers that are 100% gluten-free, lactose-free, and oil-free.</p></div>
+    <div class="faq-item"><h3>Are your ingredients really fresh?</h3><p>Yes! We use only the freshest ingredients, prepared daily.</p></div>
+    <div class="faq-item"><h3>How can I place an order?</h3><p>You can order via our website or through WhatsApp for quick delivery.</p></div>
   </section>
 
   <footer>
@@ -395,31 +377,19 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
     <p>Follow us on <a href="https://www.instagram.com/freejunx/" target="_blank">Instagram</a></p>
     <p>Email: <a href="mailto:freejunx37@gmail.com">freejunx37@gmail.com</a></p>
     <div class="social-icons">
-        <a href="mailto:freejunx37@gmail.com">📩</a>
-        <a href="https://www.instagram.com/freejunx/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/freejunx" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.twitter.com/freejunx" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:freejunx37@gmail.com">📩</a>
+      <a href="https://www.instagram.com/freejunx/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/freejunx" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.twitter.com/freejunx" target="_blank"><i class="fab fa-twitter"></i></a>
     </div>
   </footer>
 
- <a href="#" id="scrollToBottom">
-  <img src="logo.jpg" alt="Logo"
-    style="position:fixed; top:50%; right:20px; transform:translateY(-50%);
-           width:60px; height:60px; border-radius:50%; cursor:pointer; z-index:1000;">
-</a>
+  <!-- Floating logo to scroll to order section -->
+  <div class="floating-logo" id="scrollToOrder">
+    <img src="logo.jpg" alt="Logo">
+  </div>
 
-<script>
-  document.getElementById("scrollToBottom").addEventListener("click", function (e) {
-    e.preventDefault();
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth'
-    });
-  });
-</script>
-</script>
-
-  <!-- AOS Script -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
@@ -428,22 +398,12 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
       once: true,
       offset: 50
     });
+
+    document.getElementById("scrollToOrder").addEventListener("click", function () {
+      document.getElementById("order").scrollIntoView({ behavior: 'smooth' });
+    });
   </script>
-  
-    <script>
-      // Smooth scroll to top
-      document.querySelector('.floating-logo').addEventListener('click', function() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-
-    </script>
-
-    
-    
-
 
 </body>
 </html>
+
