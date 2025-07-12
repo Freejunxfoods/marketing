@@ -377,22 +377,27 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="1000"><img src="paneer patty coriander mix.jpg" /><p>Paneer Patty Coriander Mix</p></div>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="1200"><img src="paneer patty hot and spicy.jpg" /><p>Paneer Patty Burger Hot and Spicy</p></div>
     <br>
-    
-    <section class="whatsapp" id="order" data-aos="zoom-in" data-aos-delay="1200">
-     <h2 style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">GET YOUR BURGERS NOW </h2>
-      <div class="get-ur-meal-btn">
-       <a href="https://wa.me/919900347281?text=Hi!%20I%20want%20to%20order%20Burgers%20from%20Freejunx" target="_blank">Order Now</a>
-      </div>
-      </section>  
-      <br>
-    <h2 style="font-family: Algerian; font-size: 20px; color: #1e5231;">Chicken Bucket</h2>
-    <div class="menu-item" data-aos="fade-up"><img src="chicken bucket.jpg" /><p>Chicken Bucket Spicy</p></div>
-    <br>
-    <section class="whatsapp" id="order" data-aos="zoom-in" data-aos-delay="1400">
-      <div class="get-ur-meal-btn">
-        <a href="https://wa.me/919900347281?text=Hi!%20I%20want%20to%20order%20Chicken%20Bucket%20from%20Freejunx" target="_blank">Order Now</a>
-      </div>
-      </section>
+
+
+<div class="whatsapp"  id="order" data-aos="zoom-in" data-aos-delay="1200" style="margin-top: 30px;">
+  <h2 style="font-family: 'Times New Roman', Times, serif; font-weight: bold; text-align:center; color: #1e5231;">GET YOUR BURGERS NOW</h2>
+  <div class="get-ur-meal-btn" style="margin-top: 15px;">
+    <a href="https://wa.me/919900347281?text=Hi!%20I%20want%20to%20order%20Burgers%20from%20Freejunx" target="_blank">Order Now</a>
+  </div>
+</div>
+ 
+
+<h2 style="font-family: Algerian; font-size: 20px; color: #1e5231; margin-top: 40px;">Chicken Bucket</h2>
+<div class="menu-item" data-aos="fade-up">
+  <img src="chicken bucket.jpg" />
+  <p>Chicken Bucket Spicy</p>
+</div>
+<div class="whatsapp" data-aos="zoom-in" data-aos-delay="1400" style="margin-top: 15px;">
+  <div class="get-ur-meal-btn">
+    <a href="https://wa.me/919900347281?text=Hi!%20I%20want%20to%20order%20Chicken%20Bucket%20from%20Freejunx" target="_blank">Order Now</a>
+  </div>
+</div>
+
       <br>
     <h2 style="font-family: Algerian; font-size: 20px; color: #1e5231;">Salads</h2>
     <div class="menu-item" data-aos="fade-up"><img src="chicken greek salad.jpg" /><p>Chicken Greek Salad</p></div>
@@ -463,7 +468,7 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
       <a href="mailto:freejunx37@gmail.com">📩</a>
       <a href="https://www.instagram.com/freejunx/" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/freejunx" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.x.com/freejunx" target="_blank"><i class="fab fa-X"></i></a>
+      <a href="https://www.x.com/freejunx" target="_blank"><i class="fab fa-x"></i></a>
     </div>
   </footer>
 
@@ -481,10 +486,21 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
       once: true,
       offset: 50
     });
+  </script>
+  <script>
+  document.getElementById("scrollToOrder").addEventListener("click", function () {
+    const orderSection = document.getElementById("order");
+    const yOffset = -120; // You can adjust this number for more/less spacing above
 
-    document.getElementById("scrollToOrder").addEventListener("click", function () {
-      document.getElementById("order").scrollIntoView({ behavior: 'smooth' });
+    const y = orderSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
     });
+  });
+</script>
+
   </script>
 
 </body>
