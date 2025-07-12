@@ -320,6 +320,18 @@
 .nav-links a:hover {
   color: #f8f5b6;
 }
+.menu-grid-main {
+  grid-column: span 3;
+} 
+
+    @media (max-width: 600px) {
+      .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      .menu-grid-main {
+        grid-column: span 2;
+      }
+    }
 
   </style>
 </head>
@@ -375,7 +387,7 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="600"><img src="crispy chicken burger hot and spicy.jpg" /><p>Crispy Chicken Burger Hot and Spicy</p></div>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="800"><img src="paneer crispy jalapeno.jpg" /><p>Paneer Crispy Jalapeno Burger</p></div>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="1000"><img src="paneer patty coriander mix.jpg" /><p>Paneer Patty Coriander Mix</p></div>
-    <div class="menu-item" data-aos="fade-up" data-aos-delay="1200"><img src="paneer patty hot and spicy.jpg" /><p>Paneer Patty Burger Hot and Spicy</p></div>
+    <div class="menu-item" id="menu-grid-main" data-aos="fade-up" data-aos-delay="1200"><img src="paneer patty hot and spicy.jpg" /><p>Paneer Patty Burger Hot and Spicy</p></div>
   <div class="whatsapp"  id="order" data-aos="zoom-in" data-aos-delay="1200" style="margin-top: 30px;">
   <h2 style="font-family: 'Times New Roman', Times, serif; font-weight: bold; text-align:center; color: #1e5231;">GET YOUR BURGERS NOW</h2>
   <div class="get-ur-meal-btn" style="margin-top: 15px;">
@@ -417,7 +429,7 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="400"><img src="paneer palav.jpg" /><p>Paneer Palav Bowl</p></div>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="600"><img src="paneer rice.jpg" /><p>Paneer Rice Bowl</p></div>
     <br>
-    <section class="whatsapp" id="order" data-aos="zoom-in" data-aos-delay="1400">
+    <section class="whatsapp" id="menu-grid-main" data-aos="zoom-in" data-aos-delay="1400">
       <div class="get-ur-meal-btn">
         <a href="https://wa.me/919900347281?text=Hi!%20I%20want%20to%20order%20Rice-Bowls%20from%20Freejunx" target="_blank">Order Now</a>
       </div>
