@@ -324,14 +324,6 @@
   grid-column: span 3;
 } 
 
-    @media (max-width: 600px) {
-      .menu-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      }
-      .menu-grid-main {
-        grid-column: span 2;
-      }
-    }
 
   </style>
 </head>
@@ -390,15 +382,11 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
     <div class="menu-item" id="menu-grid-main" data-aos="fade-up" data-aos-delay="1200"><img src="paneer patty hot and spicy.jpg" /><p>Paneer Patty Burger Hot and Spicy</p></div>
   <div class="whatsapp"  id="order" data-aos="zoom-in" data-aos-delay="1200" style="margin-top: 30px;">
   <h2 style="font-family: 'Times New Roman', Times, serif; font-weight: bold; text-align:center; color: #1e5231;">GET YOUR BURGERS NOW</h2>
-  <div class="get-ur-meal-btn" style="margin-top: 15px;">
+  <section class="get-ur-meal-btn" style="margin-top: 15px;">
     <a href="https://wa.me/919900347281?text=Hi!%20I%20want%20to%20order%20Burgers%20from%20Freejunx" target="_blank">Order Now</a>
-  </div>
+  </section>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <h2 style="font-family: Algerian; font-size: 20px; color: #1e5231; margin-top: 40px;">Chicken Bucket</h2>
 <div class="menu-item" data-aos="fade-up">
   <img src="chicken bucket.jpg" />
@@ -441,11 +429,11 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="400"><img src="muskmelon juice.jpg" /><p>Muskmelon Juice</p></div>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="600"><img src="orange mojito.jpg" /><p>Orange Mojito</p></div>
     <br>
-    <section class="whatsapp" id="order" data-aos="zoom-in" data-aos-delay="1400">
+    <div class="whatsapp" id="order" data-aos="zoom-in" data-aos-delay="1400">
       <div class="get-ur-meal-btn">
         <a href="https://wa.me/919900347281?text=Hi!%20I%20want%20to%20order%20Beverages%20from%20Freejunx" target="_blank">Order Now</a>
       </div>
-      </section>
+    </div>
       <br>
     </section>
     
@@ -502,16 +490,20 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
   <script>
   document.getElementById("scrollToOrder").addEventListener("click", function () {
     const orderSection = document.getElementById("order");
-    const yOffset = -120; // You can adjust this number for more/less spacing above
 
-    const y = orderSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const elementTop = orderSection.getBoundingClientRect().top + window.pageYOffset;
+    const elementHeight = orderSection.offsetHeight;
+    const windowHeight = window.innerHeight;
+
+    const scrollToPosition = elementTop - (windowHeight / 2) + (elementHeight / 2);
 
     window.scrollTo({
-      top: y,
+      top: scrollToPosition,
       behavior: 'smooth'
     });
   });
 </script>
+
 
   </script>
 
