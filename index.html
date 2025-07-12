@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <link rel="preload" as="image" href="chicken%20patty%20burger%20cumin%20mix.jpg">
+
+ <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FREEJUNX – Healthy Mobile Meals</title>
 
@@ -13,299 +15,240 @@
   <meta name="description" content="Freejunx – Healthy Fast Food: Gluten-free, lactose-free, and oil-free delicious meals made for guilt-free indulgence. Order via WhatsApp now!">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="logo.jpg" type="image/jpg">
+  <meta name="keywords" content="healthy burgers, gluten free burgers, oil free food, lactose free meals, Freejunx burgers, healthy fast food Bangalore">
+  <meta name="author" content="Freejunx Foods">
+
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #F9F5EF;
-      color: #fff;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F9F5EF;
+  color: #111;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
 
-    header {
-      background-color: #1e5231;
-      text-align: center;
-      padding: 20px 15px;
-      border-bottom: 1px solid #ddd;
-    }
+header {
+  background-color: #1e5231;
+  text-align: center;
+  padding: 25px 20px;
+  border-bottom: 1px solid #ccc;
+}
 
-    .logo img {
-      width: 80px;
-      height: auto;
-      margin-bottom: 10px;
-      border-radius: 50%;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+.logo img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
 
-    header h1 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
+header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+}
 
-    header p {
-      font-size: 14px;
-      color: #fff;
-    }
+header p {
+  font-size: 14px;
+  color: #f0f0f0;
+}
 
-    section {
-      padding: 20px 15px;
-    }
+section {
+  padding: 40px 20px;
+}
 
-    h2 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #1e5231;
-    }
+h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #1e5231;
+}
 
-    .p {
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      color: #111;
-      margin-bottom: 15px;
-    }
+.p {
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 20px;
+}
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-    }
+.menu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
 
-    .menu-item img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
 
-    .menu-item p {
-      font-size: 16px;
-      text-align: center;
-      margin-top: 8px;
-      color: #444;
-    }
+.menu-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+  width: 100%;
+}
 
-    .abtus h2 {
-      font-family: 'Algerian', serif;
-      font-size: 24px;
-      color: #1e5231;
-      margin-bottom: 15px;
-    }
+.menu-item img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+}
 
-    .abtus p {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #555;
-      margin-bottom: 15px;
-    }
+.menu-item p {
+  flex: 1;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e5231;
+}
+.menu-item:hover {
+  transform: translateY(-5px);
+}
 
-    .abtus {
-      background-color: #fefce0;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
 
-    .whatsapp {
-      text-align: center;
-      margin-top: 30px;
-    }
+.abtus {
+  background-color: #fefce0;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 
-    .get-ur-meal-btn a {
-      display: inline-block;
-      background-color: #25D366;
-      color: white;
-      padding: 20px 25px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
+.abtus h2 {
+  font-family: 'Algerian', serif;
+  font-size: 24px;
+  color: #1e5231;
+  margin-bottom: 15px;
+}
 
-    .get-ur-meal-btn a:hover {
-      background-color: #1e5231;
-    }
+.abtus p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.8;
+}
 
-    footer {
-      background-color: #1e5231;
-      color: #fff;
-      text-align: center;
-      padding: 20px 15px;
-      font-size: 14px;
-    }
+.whatsapp {
+  text-align: center;
+  margin-top: 40px;
+}
 
-    footer a {
-      color: #f8f5b6;
-      text-decoration: underline;
-    }
+.get-ur-meal-btn a {
+  display: inline-block;
+  background-color: #25D366;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
 
-    footer a:hover {
-      color: #fff;
-    }
+.get-ur-meal-btn a:hover {
+  background-color: #1e5231;
+}
 
-    footer p {
-      margin: 5px 0;
-      color: #fff;
-    }
+footer {
+  background-color: #1e5231;
+  color: #fff;
+  text-align: center;
+  padding: 25px 15px;
+  font-size: 14px;
+}
 
-    .floating-logo {
-      position: fixed;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      width: 60px;
-      height: 60px;
-      background-color: #fff;
-      border-radius: 50%;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      cursor: pointer;
-    }
+footer a {
+  color: #f8f5b6;
+  text-decoration: underline;
+}
 
-    .floating-logo img {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-    }
+footer a:hover {
+  color: #fff;
+}
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+.floating-logo {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  cursor: pointer;
+}
 
-    .form-group {
-      margin-bottom: 15px;
-    }
+.floating-logo img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 
-    .form-row {
-      display: flex;
-      gap: 15px;
-    }
+.feedback {
+  padding: 40px 25px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  text-align: center;
+}
 
-    .form-control {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 16px;
-    }
+.feedback h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #1e5231;
+}
 
-    .form-control:focus {
-      border-color: #1e5231;
-      outline: none;
-    }
+.feedback p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+}
 
-    .btn {
-      background-color: #1e5231;
-      color: #fff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
+.faq {
+  background-color: #fefce0;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-top: 40px;
+}
 
-    .btn:hover {
-      background-color: #145a3d;
-    }
+.faq h2 {
+  font-family: 'Algerian', serif;
+  font-size: 24px;
+  color: #1e5231;
+  margin-bottom: 20px;
+}
 
-    .feedback {
-      padding: 40px 20px;
-      background-color: #f9f9f9;
-      border-radius: 12px;
-    }
+.faq-item {
+  margin-bottom: 20px;
+}
 
-    .feedback h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
+.faq-item h3 {
+  font-size: 18px;
+  color: #1e5231;
+  margin-bottom: 8px;
+}
 
-    .feedback p {
-      font-size: 1rem;
-      margin-bottom: 20px;
-    }
+.faq-item p {
+  font-size: 15px;
+  color: #555;
+}
 
-    .faq {
-      background-color: #fefce0;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      margin-top: 30px;
-    }
-
-    .faq h2 {
-      font-family: 'Algerian', serif;
-      font-size: 24px;
-      color: #1e5231;
-      margin-bottom: 15px;
-    }
-
-    .faq-item {
-      margin-bottom: 15px;
-    }
-
-    .faq-item h3 {
-      font-size: 18px;
-      color: #1e5231;
-      margin-bottom: 5px;
-    }
-
-    .faq-item p {
-      font-size: 16px;
-      color: #555;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 20px;
-      }
-
-      .logo img {
-        width: 60px;
-      }
-
-      .menu-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      }
-
-      .abtus p, .feedback p, .faq-item p {
-        font-size: 14px;
-      }
-    }
-
-    .social-icons {
-      margin-top: 10px;
-    }
-
-    .social-icons a {
-      color: rgb(255, 255, 255);
-      margin: 0 8px;
-      font-size: 1.2rem;
-    }
-
-    .social-icons a:hover {
-      color: #6FBF73;
-    }
-    .nav-links {
-  margin-top: 15px;
+.nav-links {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
@@ -313,25 +256,121 @@
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 15px;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #f8f5b6;
 }
-.menu-grid-main {
-  grid-column: span 3;
-} 
 
+.social-icons {
+  margin-top: 12px;
+}
 
-  </style>
+.social-icons a {
+  color: white;
+  margin: 0 8px;
+  font-size: 1.2rem;
+}
+
+.social-icons a:hover {
+  color: #6FBF73;
+}
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 22px;
+  }
+
+  .logo img {
+    width: 60px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+
+  .abtus p,
+  .feedback p,
+  .faq-item p {
+    font-size: 14px;
+  }
+
+  .get-ur-meal-btn a {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .faq-item h3 {
+    font-size: 16px;
+  }
+
+  .slides {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 20px;
+  }
+
+  .logo img {
+    width: 50px;
+  }
+}
+@media (max-width: 360px) {
+  header h1 {
+    font-size: 18px;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+}
+.hero-slider {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 30px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.slides {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  position: relative;
+}
+
+.slide-img {
+  display: none;
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain; 
+  object-position: center;
+  transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
+  transform: scale(1);
+}
+
+.slide-img.active {
+  display: block;
+  opacity: 1;
+  z-index: 2;
+}
+</style>
 </head>
   <script>
   if (window.location.hostname === "freejunx.in") {
     window.location.href = "https://www.freejunx.in";
   }
-</script>
+  </script>
 
 
 <body id="top">
@@ -340,7 +379,7 @@
   <div class="logo">
     <img src="logo.jpg" alt="FREEJUNX Logo" />
   </div>
-  <h1 style="font-family:'Times New Roman', Times, serif;">FREEJUNX</h1>
+  <h1  style="font-family:'Times New Roman', Times, serif;">FREEJUNX</h1>
   <p>You will crave, not for junk anymore</p>
   <p>Gluten-free, Lactose-free, Oil-free</p>
 
@@ -352,6 +391,17 @@
     <a href="#faq">FAQ</a>
   </div>
 </header>
+<section class="hero-slider" >
+  <div class="slides">
+    <img src="chicken patty burger cumin mix.jpg" class="slide-img active" alt="Slide 1" data-aos="fade-up">
+    <img src="mexican salad.jpg" class="slide-img" alt="Slide 2" data-aos="fade-up" >
+    <img src="chicken bucket.jpg" class="slide-img" alt="Slide 3" data-aos="fade-up">
+    <img src="jeera mojito.jpg" class="slide-img" alt="Slide 4" data-aos="fade-up">
+    <img src="chicken palav.jpg" class="slide-img" alt="Slide 6" data-aos="fade-up">
+  </div>
+</section>
+
+
 
 
    <section class="abtus" data-aos="fade-up">
@@ -363,22 +413,24 @@ Born out of a bold idea — to redefine indulgence without compromise — we ser
 In a world where burgers often mean frozen patties, heavy oils, preservatives, and guilt, we stand apart. Every bite at Freejunx is crafted to satisfy your taste buds while nourishing your body — made fresh, clean, and consciously. Whether you're a fitness enthusiast, a health-conscious foodie, or simply someone who loves a good burger without the bloated aftermath, we’re here for you.
 <br>
 <br>
-
-Our mission is simple:
 <br>
-👉 Make healthy food accessible, and make healthy food delicious.<br>
-👉 Make burgers healthy, and make healthy food tasty.
-Because we believe everyone deserves to enjoy their favorite comfort food without sacrificing their health.
+👉 Brand Promises.<br>
+<li>Make healthy food accessible, and make healthy food delicious.</li>
+<li>Oil-free cooking without compromising on taste.</li>
+<li>Lactose-free options for a guilt-free indulgence.</li>
+<li>Preservatives-free ingredients for a wholesome experience.</li>
+<li>High Protein content for a satisfying meal.</li>
+<li>Guilt-Free taste that satisfies.</li>
 
 Join the food revolution.
 Eat freely. Live guilt-free. Only at Freejunx.</p>
   </section>
 
   <section class="menu-grid" id="menu-grid" >
-    <h2 style="font-family: Algerian;">Our Menu</h2>
+    <h2 style="font-family: Algerian; text-align: center;">Our Menu</h2>
     <br>
     <br>
-    <h2 style="font-family: Algerian; font-size: 20px; color: #1e5231;">Burgers</h2>
+    <h2 style="font-family: Algerian; font-size: 20px; color: #1e5231; text-align: center;">Burgers</h2>
     <div class="menu-item" data-aos="fade-up"><img src="peri peri crispy chicken burger.jpg" /><p>Peri Peri Crispy Chicken Burger</p></div>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="200"><img src="chicken patty jalapeno.jpg" /><p>Chicken Patty Jalapeno </p></div>
     <div class="menu-item" data-aos="fade-up" data-aos-delay="400"><img src="chicken patty burger cumin mix.jpg" /><p>Chicken Patty Burger Cumin Mix</p></div>
@@ -391,6 +443,7 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
   <section class="get-ur-meal-btn" style="margin-top: 15px;">
     <a href="https://wa.me/919900347281?text=Hi!%20I%20want%20to%20order%20Burgers%20from%20Freejunx" target="_blank">Order Now</a>
   </section>
+  <br>
 </div>
 
 <h2 style="font-family: Algerian; font-size: 20px; color: #1e5231; margin-top: 40px;">Chicken Bucket</h2>
@@ -511,7 +564,25 @@ Eat freely. Live guilt-free. Only at Freejunx.</p>
 </script>
 
 
+  <script>
+    if (window.location.hostname === "freejunx.in") {
+      window.location.href = "https://www.freejunx.in";
+    }
   </script>
+  <script>
+  const slides = document.querySelectorAll('.slide-img');
+  let currentSlide = 0;
+
+  function showNextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+
+  setInterval(showNextSlide, 2000);
+
+</script>
+
 
 </body>
 </html>
