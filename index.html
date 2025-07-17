@@ -41,11 +41,25 @@ header {
 }
 
 .logo img {
-  width: 70px;
-  height: 70px;
+  width: 100px; 
+  height: 100px; 
   margin-bottom: 10px;
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+@keyframes shrinkLogo {
+  0% {
+    width: 120px;
+    height: 120px;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.logo img {
+  animation: shrinkLogo 2s ease-out forwards;
 }
 
 header h1 {
@@ -604,7 +618,6 @@ footer a:hover {
     <div class="nav-links">
       <a href="#about">About Us</a>
       <a href="#menu-grid">Menu</a>
-      <a href="#order">Order Now</a>
       <a href="#feedback">Feedback</a>
       <a href="#faq">FAQ</a>
     </div>
