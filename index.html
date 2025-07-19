@@ -1359,13 +1359,38 @@ footer a:hover {
     modal.replaceWith(clone);
   });
 
-  function openModal(id) {
-    document.getElementById(id).style.display = 'block';
-  }
+let lastOpenedModalId = null;
 
-  function closeModal(id) {
-    document.getElementById(id).style.display = 'none';
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    lastOpenedModalId = id;
+
+    // Push a dummy state so back button will trigger popstate
+    history.pushState({ modalOpen: true }, "");
   }
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    lastOpenedModalId = null;
+  }
+}
+
+// Back button handling
+window.addEventListener("popstate", function () {
+  if (lastOpenedModalId) {
+    closeModal(lastOpenedModalId);
+  }
+});
+
+
+
 
   window.onclick = e => {
     if (e.target.classList.contains('modal')) e.target.style.display = 'none';
