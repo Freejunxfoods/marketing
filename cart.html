@@ -324,6 +324,9 @@
   </header>
 
   <div id="cart-container"></div>
+  <div id="discount-info" style="color: green; font-weight: bold; margin-top: 10px;"></div>
+<div id="final-total" class="total" style="margin-top: 5px;"></div>
+
 
   <div class="actions" id="cart-actions" style="display: none;">
     <button onclick="clearCart()">Clear Cart</button>
@@ -360,27 +363,46 @@
 
 
  <script>
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Helper to save cart and refresh UI
-  function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart();
-    updateCartBadge();
-  }
+// Save cart and refresh UI
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+  updateCartBadge();
+}
 
-  // Toast notification display
-  function showToast(msg) {
-    const toast = document.getElementById("toast");
-    toast.innerText = msg;
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 2000);
-  }
+// Toast display
+function showToast(msg) {
+  const toast = document.getElementById("toast");
+  toast.innerText = msg;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2000);
+}
 
- function renderCart() {
-  cart = JSON.parse(localStorage.getItem("cart")) || []; // ✅ Refresh cart each time
-  console.log("🛒 Cart data at render:", cart); // Debug
+// 💰 DISCOUNT LOGIC
+function getDiscountedTotal(totalAmount) {
+  let orderCount = parseInt(localStorage.getItem("orderCount")) || 0;
+  let discount = 0;
 
+  if (orderCount === 0) discount = 0.5;
+  else if (orderCount === 1) discount = 0.25;
+
+  const discountAmount = totalAmount * discount;
+  const finalAmount = totalAmount - discountAmount;
+  return {
+    final: Math.round(finalAmount),
+    message:
+      discount === 0.5
+        ? "🎉 50% OFF on your first order!"
+        : discount === 0.25
+        ? "🎉 25% OFF on your second order!"
+        : "✅ No discount for this order.",
+  };
+}
+
+function renderCart() {
+  cart = JSON.parse(localStorage.getItem("cart")) || [];
   const container = document.getElementById("cart-container");
   container.innerHTML = "";
 
@@ -391,6 +413,8 @@
         <a href="index.html" style="color:#1e5231; text-decoration:underline;">Go shop now</a>
       </p>`;
     document.getElementById("cart-actions").style.display = "none";
+    document.getElementById("final-total").innerHTML = "";
+    document.getElementById("discount-info").innerHTML = "";
     return;
   }
 
@@ -428,155 +452,153 @@
       </tr>`;
   });
 
-  html += `</table><div class='total'><strong>Total: ₹${totalAmount}</strong></div>`;
+  html += `</table>`;
   container.innerHTML = html;
   document.getElementById("cart-actions").style.display = "flex";
 
-  
+  // 🧾 Show discounted total
+  const discountData = getDiscountedTotal(totalAmount);
+  document.getElementById("final-total").innerHTML = `<strong>Final Total: ₹${discountData.final}</strong>`;
+  document.getElementById("discount-info").innerText = discountData.message;
 
-
+  // Save for payment functions
+  window.finalCartTotal = discountData.final;
+  window.finalCartItems = cart;
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  renderCart();
+  updateCartBadge();
+});
 
+function updateQty(index, delta) {
+  if (!cart[index]) return;
+  cart[index].qty += delta;
+  if (cart[index].qty <= 0) cart.splice(index, 1);
+  saveCart();
+  showToast("Cart updated");
+}
+
+function removeItem(index) {
+  if (!cart[index]) return;
+  cart.splice(index, 1);
+  saveCart();
+  showToast("Item removed");
+}
+
+function clearCart() {
+  cart = [];
+  saveCart();
+  showToast("Cart cleared");
+}
+
+function updateCartBadge() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const badge = document.querySelector("#cart-icon .badge");
+  if (badge) badge.textContent = cart.length;
+}
 </script>
+
 <script>
-  // Refresh cart on load
-  document.addEventListener("DOMContentLoaded", () => {
-    renderCart();
-    updateCartBadge();
-  });
+const orderLink = document.getElementById("orderLink");
+const modal = document.getElementById("customerModal");
 
-  function updateQty(index, delta) {
-    if (!cart[index]) return;
-    cart[index].qty += delta;
-    if (cart[index].qty <= 0) cart.splice(index, 1);
-    saveCart();
-    showToast("Cart updated");
+orderLink.addEventListener("click", () => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length === 0) {
+    showToast("Your cart is empty!");
+    return;
   }
+  modal.style.display = "flex";
+});
 
-  function removeItem(index) {
-    if (!cart[index]) return;
-    cart.splice(index, 1);
-    saveCart();
-    showToast("Item removed");
-  }
+function closeModal() {
+  modal.style.display = "none";
+}
 
-  function clearCart() {
-    cart = [];
-    saveCart();
-    showToast("Cart cleared");
-  }
+document.getElementById("confirmOrderBtn").addEventListener("click", () => {
+  const btn = document.getElementById("confirmOrderBtn");
+  btn.disabled = true;
+  setTimeout(() => (btn.disabled = false), 3000);
 
-  function updateCartBadge() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const badge = document.querySelector("#cart-icon .badge");
-    if (badge) badge.textContent = cart.length;
-  }
-</script>
-<script>
-  const orderLink = document.getElementById("orderLink");
-  const modal = document.getElementById("customerModal");
-
-  // Show modal when "Order via WhatsApp" is clicked
-  orderLink.addEventListener("click", () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    if (cart.length === 0) {
-      showToast("Your cart is empty!");
-      return;
-    }
-    modal.style.display = "flex";
-  });
-
-  function closeModal() {
-    modal.style.display = "none";
-  }
-
-  // Unified handler for Proceed button
-  document.getElementById("confirmOrderBtn").addEventListener("click", () => {
-    const btn = document.getElementById("confirmOrderBtn");
-btn.disabled = true;
-setTimeout(() => btn.disabled = false, 3000);
-
-    const name = document.getElementById("custName").value.trim();
-    const phone = document.getElementById("custPhone").value.trim();
-    const mode = document.querySelector("input[name='paymentMode']:checked")?.value;
-
-    if (!name || !phone) {
-      showToast("Please fill in all details!");
-      return;
-    }
-
-    if (mode === "cod") {
-      placeCODOrder(name, phone);
-    } else {
-      payOnline(name, phone);
-    }
-  });
-
-  function placeCODOrder(name, phone) {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const itemsMsg = cart.map(item => `• ${item.name} x${item.qty}`).join("\n");
-    const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
-
-    const message = `Hi! I want to place a COD order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total: ₹${total}`;
-    const waUrl = `https://api.whatsapp.com/send?phone=919900347281&text=${encodeURIComponent(message)}`;
-
-    window.open(waUrl, "_blank");
-    modal.style.display = "none";
-    showToast("Redirecting to WhatsApp...");
-  }
-
-  function payOnline() {
   const name = document.getElementById("custName").value.trim();
   const phone = document.getElementById("custPhone").value.trim();
+  const mode = document.querySelector("input[name='paymentMode']:checked")?.value;
 
   if (!name || !phone) {
     showToast("Please fill in all details!");
     return;
   }
 
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
-  const totalPaise = total * 100; // Razorpay uses paise
-
-const options = {
-  key: "rzp_live_dU24OHAXQXM3KV", // Use live key in production
-  amount: totalPaise,
-  currency: "INR",
-  name: "Freejunx",
-  description: "Order Payment",
-  handler: function (response) {
-    showToast("Payment Successful!");
-    closeModal();
-    clearCart();
-
-    const itemsMsg = cart.map(item => `• ${item.name} x${item.qty}`).join("\n");
-    const message = `Hi! I have placed an online prepaid order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total Paid: ₹${total}\n🧾 Payment ID: ${response.razorpay_payment_id}`;
-
-    const waUrl = `https://api.whatsapp.com/send?phone=919900347281&text=${encodeURIComponent(message)}`;
-    window.open(waUrl, "_blank");
-  },
-  modal: {
-    ondismiss: function () {
-      showToast("Payment cancelled.");
-    }
-  },
-  prefill: {
-    name: name,
-    contact: phone
-  },
-  theme: {
-    color: "#1e5231"
+  if (mode === "cod") {
+    placeCODOrder(name, phone);
+  } else {
+    payOnline(name, phone);
   }
-};
+});
 
+function placeCODOrder(name, phone) {
+  const itemsMsg = window.finalCartItems.map(item => `• ${item.name} x${item.qty}`).join("\n");
+  const total = window.finalCartTotal;
+
+  const message = `Hi! I want to place a COD order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total: ₹${total}`;
+  const waUrl = `https://api.whatsapp.com/send?phone=919900347281&text=${encodeURIComponent(message)}`;
+
+  window.open(waUrl, "_blank");
+  modal.style.display = "none";
+  showToast("Redirecting to WhatsApp...");
+
+  // ✅ Mark order completed
+  let orderCount = parseInt(localStorage.getItem("orderCount")) || 0;
+  localStorage.setItem("orderCount", orderCount + 1);
+  clearCart();
+}
+
+function payOnline(name, phone) {
+  const cart = window.finalCartItems;
+  const total = window.finalCartTotal;
+  const totalPaise = total * 100;
+
+  const itemsMsg = cart.map(item => `• ${item.name} x${item.qty}`).join("\n");
+
+  const options = {
+    key: "rzp_live_dU24OHAXQXM3KV",
+    amount: totalPaise,
+    currency: "INR",
+    name: "Freejunx",
+    description: "Order Payment",
+    handler: function (response) {
+      showToast("Payment Successful!");
+      closeModal();
+
+      const message = `Hi! I have placed an online prepaid order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total Paid: ₹${total}\n🧾 Payment ID: ${response.razorpay_payment_id}`;
+      const waUrl = `https://api.whatsapp.com/send?phone=919900347281&text=${encodeURIComponent(message)}`;
+      window.open(waUrl, "_blank");
+
+      // ✅ Mark order completed
+      let orderCount = parseInt(localStorage.getItem("orderCount")) || 0;
+      localStorage.setItem("orderCount", orderCount + 1);
+      clearCart();
+    },
+    modal: {
+      ondismiss: function () {
+        showToast("Payment cancelled.");
+      },
+    },
+    prefill: {
+      name: name,
+      contact: phone,
+    },
+    theme: {
+      color: "#1e5231",
+    },
+  };
 
   const rzp = new Razorpay(options);
   rzp.open();
 }
-
 </script>
+
 </body>
 </html>
-
 
