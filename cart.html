@@ -347,6 +347,9 @@
     <h2>Enter Your Details</h2>
     <input type="text" id="custName" placeholder="Your Name" required />
     <input type="tel" id="custPhone" placeholder="Phone Number" required />
+    <input type="text" id="custAddress" placeholder="Click to fetch current address" readonly onclick="getCurrentAddress()" />
+<small id="addressStatus" style="color:#888; display:block; margin-bottom:10px;">📍 Tap to get current location</small>
+
     
     <div style="text-align: left; margin: 10px 0;">
       <label><input type="radio" name="paymentMode" value="online" checked /> 💳 Pay Online</label><br />
@@ -538,17 +541,18 @@ document.getElementById("confirmOrderBtn").addEventListener("click", () => {
 });
 
 function placeCODOrder(name, phone) {
+  const address = document.getElementById("custAddress")?.value || "Not provided";
   const itemsMsg = window.finalCartItems.map(item => `• ${item.name} x${item.qty}`).join("\n");
   const total = window.finalCartTotal;
 
-  const message = `Hi! I want to place a COD order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total: ₹${total}`;
-  const waUrl = `https://api.whatsapp.com/send?phone=919900347281&text=${encodeURIComponent(message)}`;
+  const message = `Hi! I want to place a Cash on Delivery order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total to Pay: ₹${total}`;
+  const encodedMsg = encodeURIComponent(message);
+  const waUrl = `https://wa.me/919900347281?text=${encodedMsg}`; // Replace with your number
 
   window.open(waUrl, "_blank");
   modal.style.display = "none";
   showToast("Redirecting to WhatsApp...");
 
-  // ✅ Mark order completed
   let orderCount = parseInt(localStorage.getItem("orderCount")) || 0;
   localStorage.setItem("orderCount", orderCount + 1);
   clearCart();
@@ -558,11 +562,11 @@ function payOnline(name, phone) {
   const cart = window.finalCartItems;
   const total = window.finalCartTotal;
   const totalPaise = total * 100;
-
+  const address = document.getElementById("custAddress")?.value || "Not provided";
   const itemsMsg = cart.map(item => `• ${item.name} x${item.qty}`).join("\n");
 
   const options = {
-    key: "rzp_live_dU24OHAXQXM3KV",
+    key: "rzp_live_dU24OHAXQXM3KV", // Use test key while testing
     amount: totalPaise,
     currency: "INR",
     name: "Freejunx",
@@ -571,11 +575,10 @@ function payOnline(name, phone) {
       showToast("Payment Successful!");
       closeModal();
 
-      const message = `Hi! I have placed an online prepaid order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total Paid: ₹${total}\n🧾 Payment ID: ${response.razorpay_payment_id}`;
-      const waUrl = `https://api.whatsapp.com/send?phone=919900347281&text=${encodeURIComponent(message)}`;
+      const message = `Hi! I have placed an online prepaid order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total Paid: ₹${total}\n🧾 Payment ID: ${response.razorpay_payment_id}`;
+      const waUrl = `https://wa.me/919900347281?text=${encodeURIComponent(message)}`;
       window.open(waUrl, "_blank");
 
-      // ✅ Mark order completed
       let orderCount = parseInt(localStorage.getItem("orderCount")) || 0;
       localStorage.setItem("orderCount", orderCount + 1);
       clearCart();
@@ -597,8 +600,36 @@ function payOnline(name, phone) {
   const rzp = new Razorpay(options);
   rzp.open();
 }
+
 </script>
+<script>
+function getCurrentAddress() {
+  const addressInput = document.getElementById("custAddress");
+  const status = document.getElementById("addressStatus");
+
+  if (!navigator.geolocation) {
+    addressInput.value = "Geolocation not supported";
+    return;
+  }
+
+  status.innerText = "Fetching location...";
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      const mapsUrl = `https://www.google.com/maps?q=${lat},${lon}`;
+      addressInput.value = mapsUrl;
+      status.innerText = "📍 Location fetched";
+    },
+    () => {
+      addressInput.value = "Unable to fetch location";
+      status.innerText = "❌ Failed to fetch location";
+    }
+  );
+}
+</script>
+
 
 </body>
 </html>
-
