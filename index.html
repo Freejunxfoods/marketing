@@ -645,8 +645,10 @@ footer a:hover {
       <br>
       👉 Brand Promises.<br>
       <li>Make healthy food accessible, and make healthy food delicious.</li>
-      <li>Oil-free cooking without compromising on taste.</li>
+      <li>Oil-free cooking without
+         compromising on taste.</li>
       <li>Lactose-free .</li>
+      <li>Gluten-Free</li>
       <li>Preservatives-free.</li>
       <li>High Protein.</li>
       <li>Guilt-Free.</li>
@@ -1078,7 +1080,7 @@ footer a:hover {
   <img src="images/chicken bucket.jpg" alt="Chicken Bucket" />
   <div class="menu-item-content">
     <h3>Chicken Bucket</h3>
-    <p>Delicious chicken pieces, perfect for sharing</p>
+    <p>Calories- - Kcal<br> Protien- - g<br>Sat.Fats- - g</p>
 
   <!-- Dropdown to choose bucket size -->
   <select class="bucket-size" onchange="updateBucketPrice(this)">
@@ -1099,6 +1101,33 @@ footer a:hover {
 
   <!-- Add to Cart Button -->
   <button class="add-to-cart-btn" onclick="addToCart(this, 'Chicken Bucket', 239)">Add to Cart</button>
+</div>
+</div>
+<div class="menu-item" data-cat="bucket">
+  <img src="images/chicken bucket.jpg" alt="Thigh Bucket" />
+  <div class="menu-item-content">
+    <h3>Thigs Bucket</h3>
+    <p>Calories- - Kcal<br> Protien- - g<br>Sat.Fats- - g</p>
+
+  <!-- Dropdown to choose bucket size -->
+  <select class="bucket-size" onchange="updateBucketPrice(this)">
+    <option value="239">5 pcs - ₹239</option>
+    <option value="369">8 pcs - ₹369</option>
+    <option value="559">12 pcs - ₹559</option>
+  </select>
+
+  <!-- Display updated price -->
+  <span class="price" data-price="239">₹239</span>
+
+  <!-- Quantity Selector -->
+  <div class="quantity-wrapper">
+    <button class="qty-btn" onclick="decreaseQty(this)">−</button>
+    <input type="number" class="qty-input" value="1" readonly />
+    <button class="qty-btn" onclick="increaseQty(this)">+</button>
+  </div>
+
+  <!-- Add to Cart Button -->
+  <button class="add-to-cart-btn" onclick="addToCart(this, 'Thigh Bucket', 239)">Add to Cart</button>
 </div>
 </div>
 
@@ -1232,8 +1261,8 @@ footer a:hover {
         <button class="add-to-cart-btn" onclick="addToCart(this, 'Watermelon Juice', 43)">Add to Cart</button>
       </div>
       </div>
-      </div>
-
+     
+  </div>
   <!-- Modal Template -->
   <template id="modal-template">
     <div class="modal">
