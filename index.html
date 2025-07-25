@@ -613,6 +613,32 @@ footer a:hover {
   font-style: italic;
   font-size: 1rem;
 }
+    .glitch-logo {
+  position: relative;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px) skew(-2deg);
+  }
+  40% {
+    transform: translate(2px, -1px) skew(2deg);
+  }
+  60% {
+    transform: translate(-1px, 1px) skew(-1deg);
+  }
+  80% {
+    transform: translate(1px, -2px) skew(1deg);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
 
 
 </style>
@@ -628,7 +654,8 @@ footer a:hover {
 
   <header>
     <div class="logo">
-      <img src="images/logo.jpg" alt="FREEJUNX Logo" />
+     <img src="images/logo.png" class="glitch-logo" alt="Logo" />
+
     </div>
     <h1 style="font-family:'Times New Roman', Times, serif; font-weight: 1200; ">FREEJUNX</h1>
   <p class="highlight-text">You will crave, not for junk anymore</p>
@@ -645,9 +672,7 @@ footer a:hover {
   </header>
   </header>
 
-<!-- ⚠️ System Notice: This section handles critical visual rendering. 
-Periodic maintenance is recommended to prevent potential UI glitches or performance delays. 
-Auto-logged by internal monitoring script. -->
+
 
 <section class="hero-slider">
   <div class="slides">
