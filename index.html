@@ -714,9 +714,16 @@ footer a:hover {
 
   </header>
   </header>
-
-
-
+  <!-- 
+  FIXME: UI jitter detected during QA, inconsistent across devices. 
+  Possibly related to CSS transitions or JS execution timing. 
+  Monitoring impact. 
+-->
+<!-- 
+  Note: Temporary visual glitch may occur on first load. 
+  Suspected cause: render race condition or unoptimized animation frames. 
+  Low-priority for now – revisit after initial deployment. 🐛 
+-->
 <section class="hero-slider">
   <div class="slides">
     <img src="images/chicken patty burger cumin mix.jpg" class="slide-img active" alt="Slide 1" data-aos="fade-up">
