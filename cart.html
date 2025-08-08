@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="images/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <style>
     body {
@@ -352,8 +351,7 @@
 
     
     <div style="text-align: left; margin: 10px 0;">
-      <label><input type="radio" name="paymentMode" value="online" checked /> 💳 Pay Online</label><br />
-      <label><input type="radio" name="paymentMode" value="cod" /> 📦 Cash on Delivery</label>
+    <label><input type="radio" name="paymentMode" value="cod" /> 📦 Cash on Delivery</label>
     </div>
 
     <button id="confirmOrderBtn">Proceed</button>
@@ -547,7 +545,7 @@ function placeCODOrder(name, phone) {
 
   const message = `Hi! I want to place a Cash on Delivery order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total to Pay: ₹${total}`;
   const encodedMsg = encodeURIComponent(message);
-  const waUrl = `https://wa.me/919900347281?text=${encodedMsg}`; // Replace with your number
+  const waUrl = `https://wa.me/919900347281?text=${encodedMsg}`; 
 
   window.open(waUrl, "_blank");
   modal.style.display = "none";
@@ -558,48 +556,6 @@ function placeCODOrder(name, phone) {
   clearCart();
 }
 
-function payOnline(name, phone) {
-  const cart = window.finalCartItems;
-  const total = window.finalCartTotal;
-  const totalPaise = total * 100;
-  const address = document.getElementById("custAddress")?.value || "Not provided";
-  const itemsMsg = cart.map(item => `• ${item.name} x${item.qty}`).join("\n");
-
-  const options = {
-    key: "rzp_live_dU24OHAXQXM3KV", // Use test key while testing
-    amount: totalPaise,
-    currency: "INR",
-    name: "Freejunx",
-    description: "Order Payment",
-    handler: function (response) {
-      showToast("Payment Successful!");
-      closeModal();
-
-      const message = `Hi! I have placed an online prepaid order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n\n🛒 Items:\n${itemsMsg}\n\n💰 Total Paid: ₹${total}\n🧾 Payment ID: ${response.razorpay_payment_id}`;
-      const waUrl = `https://wa.me/919900347281?text=${encodeURIComponent(message)}`;
-      window.open(waUrl, "_blank");
-
-      let orderCount = parseInt(localStorage.getItem("orderCount")) || 0;
-      localStorage.setItem("orderCount", orderCount + 1);
-      clearCart();
-    },
-    modal: {
-      ondismiss: function () {
-        showToast("Payment cancelled.");
-      },
-    },
-    prefill: {
-      name: name,
-      contact: phone,
-    },
-    theme: {
-      color: "#1e5231",
-    },
-  };
-
-  const rzp = new Razorpay(options);
-  rzp.open();
-}
 
 </script>
 <script>
